@@ -1,6 +1,6 @@
-These are samples of work performed at Montero Soft/Pluriva between June 2008-April 2010 as Data Analyst (SQL Server 2008), 
-Business Analyst and Project Manager for Automated Invoicing System (Distributed Web Application based on 
-Web Services) at Rompetrol Romania.
+These are samples of work performed at Montero Soft/Pluriva between May 2010- July 2012 as Software Architect / Business Analyst, 
+and Programme Manager for SINS (Schengen National Signaling System), a distributed application based on Business Processes orchestrated by
+Web Services and IBM Enterprise Service Bus.
 
-The application was developed with ASP.NET 2.0 / Visual Basic, C# and comprised 8 solutions.
-Application's database was developed using Microsoft SQL Server 2008. 
+The application was developed using IBM Rational tools (RRC, RTC, RSA, RFT etc) using a Jazz platform and Eclipse / Java2EE as programming language, 
+WebSphere Process Server and WebSphere Integration Developer for Business Process Development and  Oracle Database.
