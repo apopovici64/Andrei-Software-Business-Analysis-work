@@ -1,0 +1,112 @@
+select top 1 * from 
+
+select 
+--top 1 
+* from EmployeeJOURNAL 
+where EmployeeID = 104     
+and JMonth = 3 and JYear = 2012    --LMID =110
+
+select 
+--top 1 
+* from EmployeeJOURNAL 
+where EmployeeID = 104     
+and JMonth = 1 and JYear = 2013    --LMID =110
+
+
+select 
+--top 1 
+* from EmployeeJOURNAL 
+where LMID = 110     
+and JMonth = 10 and JYear = 2012    --LMID =110
+
+
+select 
+--top 1 
+* from EmployeeJOURNAL 
+where LMID = 110     
+and JMonth = 10 and JYear = 2012    --LMID =110
+
+
+
+
+select top 1 * from dbo.Employee_Contracts
+
+select top 1 * from dbo.EMPLOYEES where First_Name  = 'Geanino'  --ID_Employee = 104, ID_Position = 5006
+select  * from dbo.EMPLOYEES where First_Name  = 'Sabine Ursula'  --ID_Employee = 110, ID_Position = 5005 LMID = ID_Employee
+select  * from dbo.EMPLOYEES where ID_Employee  = 116  --ID_Employee = 110, ID_Position = 5005; previous position ID_Position = 4985; is in AR_Development or in tblPositions for
+                                                       -- ID_Component = 16, ID_Department = 51, Unit_Office = 370                                             
+
+
+select top 1 * from dbo.Positions where ID_Position = 5006  --ID_Component = 16, ID_Department = 51, Unit_Office = 368
+select top 1 * from dbo.Positions where ID_Position = 4985  --previous position for EmployeeID = 116; ID_Component = 16, ID_Department = 51, Unit_Office = 370
+
+select * from EmployeeJOURNAL 
+where ComponentID =16 and DepartmentID = 51 and UnitID = 368
+and JMonth = 1 and JYear = 2013      --Checked = 1, Validated = 0, EmployeeID =116 not present, like EmployeeID =110  for Dec 2012, Nov 2012 etc-see below. Could be present for 
+                                     --his previous Unit_Office; Check this and fix it!
+
+select * from EmployeeJOURNAL 
+where ComponentID =16 and DepartmentID = 51 and UnitID = 368 
+and JMonth = 11 and JYear = 2012      --Checked = 1, Validated = 0
+
+select * from EmployeeJOURNAL 
+where ComponentID =16 and DepartmentID = 51 and UnitID = 368
+and JMonth = 11 and JYear = 2012      --Checked = 1, Validated = 0
+
+
+
+
+
+select * from ValidationDetails where ComponentID =16 and DepartmentID = 51 and UnitID = 368
+and ARMonth = 12 and ARYear = 2012
+
+
+
+begin tran
+
+UPDATE dbo.EmployeeJOURNAL
+SET Checked=1
+WHERE JMonth=12 and JYear = 2012 and LMID=110
+
+commit
+
+
+select * from EmployeeJournal
+where JMonth =12 and JYear = 2012 and LMID = 110
+
+
+use[AR]
+select * from EmployeeJournal
+where JMonth =12 and JYear = 2012 and ComponentID =16 and DepartmentID = 51 and UnitID = 368   --37 rows, Validated = 0; Validated =1 after update
+
+
+--update EmployeeJOURNAL in AR db
+use[AR]
+begin tran
+
+UPDATE dbo.EmployeeJOURNAL
+SET Validated=1
+WHERE JMonth=12 and JYear = 2012 and ComponentID =16 and DepartmentID = 51 and UnitID = 368  --37 rows affected
+
+
+commit
+
+
+
+
+SELECT t.name AS table_name,
+ SCHEMA_NAME(schema_id) AS schema_name,
+ c.name AS column_name
+ FROM sys.tables AS t
+ INNER JOIN sys.columns c ON t.OBJECT_ID = c.OBJECT_ID
+ WHERE c.name LIKE 'UserProfile%'
+ ORDER BY schema_name, table_name; 
+ 
+ 
+ 
+ select * from Engagement
+ 
+ 
+ 
+ 
+ select top1 * from 

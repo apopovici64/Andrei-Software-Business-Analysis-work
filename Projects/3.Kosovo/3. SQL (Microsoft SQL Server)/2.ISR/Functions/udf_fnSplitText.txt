@@ -1,0 +1,44 @@
+CREATE Function [dbo].[fnSplit](@text text, @delimitor nchar(1))
+ 
+RETURNS
+@table TABLE
+(
+    [Index] int Identity(0,1),
+    [SplitText] varchar(10)
+)
+AS
+ 
+BEGIN
+    declare @current varchar(10)
+    declare @endIndex int
+    declare @textlength int
+    declare @startIndex int
+ 
+    set @startIndex = 1
+ 
+    if(@text is not null)
+    begin
+        set @textLength = datalength(@text)
+ 
+        while(1=1)
+        begin
+            set @endIndex = charindex(@delimitor, @text, @startIndex)
+ 
+            if(@endIndex != 0)
+            begin
+                set @current = substring(@text,@startIndex, @endIndex - @StartIndex)
+                Insert Into @table ([SplitText]) values(@current)
+                set @startIndex = @endIndex + 1   
+            end
+            else
+            begin
+                set @current = substring(@text, @startIndex, datalength(@text)-@startIndex+1)
+                Insert Into @table ([SplitText]) values(@current)
+                break
+            end
+        end
+ 
+    end
+ 
+    return
+END

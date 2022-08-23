@@ -1,0 +1,11 @@
+select * from sys.columns
+where is_computed = 1
+
+SELECT t.name AS TableName, c.name AS ColName 
+FROM sys.columns c
+    JOIN sys.tables t ON c.object_id = t.object_id
+WHERE c.name in (select name from sys.columns
+where is_computed = 1)
+group by t.name, c.name
+
+

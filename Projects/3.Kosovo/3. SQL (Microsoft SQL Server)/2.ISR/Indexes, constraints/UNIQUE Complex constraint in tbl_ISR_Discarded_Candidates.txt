@@ -1,0 +1,15 @@
+USE [ISR_Development]
+GO
+
+/****** Object:  Index [IX_Tbl_ISR_Discarded_Candidates]    Script Date: 03/07/2013 16:54:06 ******/
+ALTER TABLE [dbo].[Tbl_ISR_Discarded_Candidates] ADD  CONSTRAINT [IX_Tbl_ISR_Discarded_Candidates] UNIQUE NONCLUSTERED 
+(
+	[First_name] ASC,
+	[Last_name] ASC,
+	[ID_CFC] ASC,
+	[DOB] ASC,
+	[Passport_No] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON, FILLFACTOR = 75) ON [PRIMARY]
+GO
+
+

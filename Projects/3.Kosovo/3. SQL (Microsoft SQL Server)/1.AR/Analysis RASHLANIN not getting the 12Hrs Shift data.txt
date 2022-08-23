@@ -1,0 +1,39 @@
+select * from dbo.ShiftWorkers
+where ID_Employee = (select ID_Employee from dbo.EMPLOYEES where Last_name = 'RASHLANIN')
+
+select top 1 ComponentID, DepartmentID, UnitID from dbo.EmployeeJOURNAL where EmployeeID = 1032
+
+select  * from dbo.Employees where ID_Employee = 1032
+
+select  * from dbo.Employees where ID_Employee = 1032
+
+
+select c.Components, d.Department, u.Unit_Office from Components c , Department d , Unit_Office u
+where c.ID = 6 and d.ID_Department = 19 and u.ID_Unit_Office= 0
+
+select distinct EmployeeID  from dbo.EmployeeJOURNAL where 
+ComponentID = 6 and DepartmentID = 19 and UnitID = 0
+
+select * from dbo.ShiftHours where ComponentID = 6 and DepartmentID = 19 and UnitID = 0
+
+select * from dbo.ShiftWorkers where ID_Employee in ( select distinct EmployeeID  from dbo.EmployeeJOURNAL where 
+ComponentID = 6 and DepartmentID = 19 and UnitID = 0) and 12HrsDayShiftStart is null order by ID_Employee
+
+select * from dbo.ShiftWorkers where ShiftWorker8Hours = 0 and ([8HrsMorningShiftStart] IS NOT NULL or [8HrsAfternoonShiftStart] IS NOT NULL) --confusing data
+
+select * from dbo.ShiftWorkers where ShiftWorker12Hours = 0 and [12HrsDayShiftStart] IS NOT NULL  --confusing data
+
+select * from dbo.ShiftWorkers where ID_Employee = 1032
+
+
+
+select * from dbo.ShiftWorkers 
+--where ID_Employee = 1032
+where [12HrsDayShiftStart] = '2012-10-10 06:00:00.000'
+
+select count (*), ID_Employee from ShiftWorkers 
+where ID_Employee = 1032
+group by ID_Employee
+
+
+
