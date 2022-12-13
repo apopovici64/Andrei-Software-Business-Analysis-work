@@ -1,0 +1,30 @@
+Account Names must be in CAPITAL, and have max 20 characters.
+
+CC_SSS_DDDD_PPPPP_XX
+
+_ : (underscore) separetor char
+
+Mandatory: 7 first characters ("CC_SSS_")
+
+CC: 
+2 characters from ISO Country Code 3166-1
+
+SSS: 
+Site: 3 characters AKA OHQ, FHQ, MoD, MHQ, MFA, etc...
+
+XX:
+Number: up to 2
+
+-------------
+
+Optional but strongly recommanded (depending on your organisation)
+
+DDDD:
+Dept: English up to 4 Char
+
+PPPPP:
+Pos: English Code up to 5 
+
+
+
+
